@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.make-post {
+  @apply flex w-screen h-screen overflow-hidden
+}
+
+.make-post .image {
+  @apply w-[800px] xl:block hidden
+}
+
+.make-post .inputs {
+  @apply w-full xl:w-[calc(100vw-800px)] h-full flex flex-col justify-center items-center gap-10 p-10 bg-gray-100
+}
+
+.make-post .inputs div {
+  @apply w-full
+}
+
+.make-post .inputs h1 {
+  @apply text-4xl font-bold overflow-visible
+}
+
+.make-post .inputs h2 {
+  @apply text-xl mb-2 font-bold
+}
+
+.make-post input, .make-post textarea {
+  @apply w-full p-4 text-lg shadow-lg focus:outline-blue-600 rounded-sm
+}
+
+.make-post textarea {
+  @apply outline-none resize-none w-full h-full
+}
+
+.make-post button {
+  @apply w-full bg-black text-xl p-4 text-white font-bold text-center rounded-md
+}
+
+.posts {
+  @apply w-screen h-screen
+}
+
+.posts .list {
+  @apply flex flex-col gap-5 overflow-scroll h-5/6 border-black border-4 rounded-lg p-10 mx-10
+}
+
+.posts header {
+  @apply flex justify-between items-center w-full h-24 px-10
+}
+
+.posts header h1 {
+  @apply sm:text-4xl text-2xl font-bold overflow-visible
+}
+
+.posts header button {
+  @apply w-24 sm:w-48 bg-black sm:text-xl text-sm sm:p-4 p-2 text-white font-bold text-center rounded-md
+}
+
+.posts .empty {
+  @apply w-full flex items-center justify-center
+}
+
+.posts .empty h1 {
+  @apply font-bold text-2xl
+}
+
+.posts .post {
+  @apply p-5 flex flex-col gap-5 w-full border-black border-2 rounded
+}
+
+.posts .post h1 {
+  @apply font-bold text-lg w-full border-b-2 border-b-black
+}
+
+.posts .post h2 {
+  @apply text-gray-500
+}
+
+.posts footer {
+  @apply w-screen h-24 fixed bottom-0 flex items-center justify-center
+}
+
+.posts footer h1 {
+  @apply font-bold text-lg
+}
+
+.posts a {
+  @apply hover:text-blue-600
+}
