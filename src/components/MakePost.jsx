@@ -4,12 +4,29 @@ import { Link } from 'react-router-dom'
 import { toast } from "react-toastify"
 import { PostsContext } from '../App'
 import { useContext } from 'react'
+import LightModeIcon from '@mui/icons-material/LightMode';
+import ModeNightIcon from '@mui/icons-material/ModeNight';
+import { IconButton, Tooltip } from '@mui/material'
 
 const MakePost = () => {
   // Declare state hooks for variables
   const [username, setUsername] = useState('')
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
+
+  // Declare state hooks for light mode and night mode
+  const [lightMode, setLightMode] = useState(true)
+  const [darkMode, setDarkMode] = useState(false)
+
+  const toggleMode = () => {
+    if (lightMode == true) {
+      setLightMode(false)
+      setDarkMode(true)
+    } else {
+      setLightMode(true)
+      setDarkMode(false)
+    }
+  }
 
   // Get posts from PostsContext
   const posts = useContext(PostsContext)
@@ -97,27 +114,29 @@ const MakePost = () => {
   return (
     <div className="make-post">
       <img className='image' src={blog}/>
-      <form className="inputs" onSubmit={submit}>
+      <form className={`inputs ${lightMode == true ? ('light-mode') : ('dark-mode')}`} onSubmit={submit}>
+        <div className='mode-button-container'>
+        <Tooltip placement='bottom' arrow title={lightMode == false ? ('Light Mode') : ('Dark Mode')}>
+          <IconButton onClick={() => {toggleMode()}}>
+              {lightMode == false ? (<LightModeIcon className='!text-6xl text-yellow-300'/>) : (<ModeNightIcon className='!text-6xl'/>)}
+          </IconButton>
+        </Tooltip>
+        </div>
         <h1>What's on your mind?</h1>
         <div>
           <h2>Username</h2>
-          {/* Set username to input value */}
           <input required onChange={(e) => {setUsername(e.target.value)}}/>
         </div>
         <div>
           <h2>Title</h2>
-          {/* Set title to input value */}
           <input required onChange={(e) => {setTitle(e.target.value)}}/>
         </div>
         <div className='mb-10'>
           <h2>Content</h2>
-          {/* Set content to input value */}
           <textarea required onChange={(e) => {setContent(e.target.value)}}/>
         </div>
-        {/* Submit post */}
-        <button type='submit'>Submit</button>
-        {/* Navigate to posts page */}
-        <Link to='/posts' className='w-full'><button>View Posts</button></Link>
+        <button className='submit-btn' type='submit'>Submit</button>
+        <Link to='/posts' className='w-full'><button className='submit-btn'>View Posts</button></Link>
       </form>
     </div>
   )

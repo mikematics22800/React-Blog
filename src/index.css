@@ -10,15 +10,27 @@
   @apply flex w-screen h-screen overflow-hidden
 }
 
-.make-post .image {
+.image {
   @apply w-[800px] xl:block hidden
 }
 
-.make-post .inputs {
-  @apply w-full xl:w-[calc(100vw-800px)] h-full flex flex-col justify-center items-center gap-10 p-10 bg-gray-100
+.inputs {
+  @apply w-full xl:w-[calc(100vw-800px)] h-full flex flex-col items-center gap-10 sm:px-20 px-10 pt-10
 }
 
-.make-post .inputs div {
+.light-mode {
+  @apply bg-gray-200
+}
+
+.dark-mode {
+  @apply bg-gray-800 text-white
+}
+
+.mode-button-container {
+  @apply w-full flex justify-end
+}
+
+.inputs div {
   @apply w-full
 }
 
@@ -27,19 +39,23 @@
 }
 
 .make-post .inputs h2 {
-  @apply text-xl mb-2 font-bold
+  @apply text-2xl mb-2 font-bold
 }
 
-.make-post input, .make-post textarea {
-  @apply w-full p-4 text-lg shadow-lg focus:outline-blue-600 rounded-sm
+input, textarea {
+  @apply w-full p-2 text-lg shadow-lg focus:outline-blue-600 rounded-sm
+}
+
+.dark-mode input, .dark-mode textarea {
+  @apply bg-gray-600
 }
 
 .make-post textarea {
   @apply outline-none resize-none w-full h-full
 }
 
-.make-post button {
-  @apply w-full bg-black text-xl p-4 text-white font-bold text-center rounded-md
+.submit-btn {
+  @apply w-full text-xl p-4 font-bold text-center rounded-md bg-blue-800 text-white
 }
 
 .posts {
