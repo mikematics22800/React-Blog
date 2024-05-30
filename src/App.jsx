@@ -4,6 +4,9 @@ import MakePost from "./components/MakePost"
 import Posts from "./components/Posts"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { IconButton, Tooltip } from '@mui/material'
+import LightModeIcon from '@mui/icons-material/LightMode';
+import ModeNightIcon from '@mui/icons-material/ModeNight';
 
 // Declare and export PostsContext
 export const PostsContext = createContext()
@@ -21,19 +24,35 @@ const App = () => {
     }
   }, [])
 
+  // Declare state hook for mode
+  const [lightMode, setLightMode] = useState(true)
+
+  // Declare function for toggling mode
+  const toggleMode = () => {
+    if (lightMode == true) {
+      setLightMode(false)
+    } else {
+      setLightMode(true)
+    }
+  }
+
+  const ModeButton = () => {
+    return (
+      <Tooltip placement='bottom' arrow title={lightMode == false ? ('Light Mode') : ('Dark Mode')}>
+        <IconButton onClick={() => {toggleMode()}}>
+            {lightMode == false ? (<LightModeIcon className='sm:!text-6xl !text-4xl text-yellow-300'/>) : (<ModeNightIcon className='sm:!text-6xl !text-4xl'/>)}
+        </IconButton>
+      </Tooltip>
+    )
+  }
 
   return (
-    /* Gives children access to posts array */
     <PostsContext.Provider value={posts}>
-      {/* Enables page navigation */}
       <HashRouter>
         <Routes>
-          {/* Links root page to MakePost component */}
-          <Route index element={<MakePost/>}/>
-          {/* Links posts page to Posts component */}
-          <Route path="posts" element={<Posts/>}/>
+          <Route index element={<MakePost lightMode={lightMode} ModeButton={ModeButton}/>}/>
+          <Route path="posts" element={<Posts lightMode={lightMode} ModeButton={ModeButton}/>}/>
         </Routes>
-        {/* Enables react-toastify */}
         <ToastContainer/>
       </HashRouter>
     </PostsContext.Provider>

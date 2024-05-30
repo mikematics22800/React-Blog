@@ -1,4 +1,4 @@
-# React-Blog, a simple React blog that caches and displays user input.
+# React-Blog, a simple blog application that caches and displays user input.
 
 ## Installation
 

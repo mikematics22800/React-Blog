@@ -7,47 +7,52 @@
 }
 
 .make-post {
-  @apply flex w-screen h-screen overflow-hidden
+  @apply flex w-screen h-screen overflow-hidden bg-gray-200
+}
+
+
+.dark {
+  @apply !bg-gray-800 text-white
+}
+
+.dark * {
+  @apply border-white
+}
+
+.light * {
+  @apply border-black
+}
+
+.dark input {
+  @apply bg-gray-600
 }
 
 .image {
   @apply w-[800px] xl:block hidden
 }
 
-.inputs {
-  @apply w-full xl:w-[calc(100vw-800px)] h-full flex flex-col items-center gap-10 sm:px-20 px-10 pt-10
+form {
+  @apply w-full xl:w-[calc(100vw-800px)] h-full flex flex-col items-center gap-10 sm:px-20 px-10 pt-10 duration-200
 }
 
-.light-mode {
-  @apply bg-gray-200
-}
-
-.dark-mode {
-  @apply bg-gray-800 text-white
-}
-
-.mode-button-container {
+.mode-btn-container {
   @apply w-full flex justify-end
 }
 
-.inputs div {
+form div {
   @apply w-full
 }
 
-.make-post .inputs h1 {
+form h1 {
   @apply text-4xl font-bold overflow-visible
 }
 
-.make-post .inputs h2 {
+form h2 {
   @apply text-2xl mb-2 font-bold
 }
 
 input, textarea {
-  @apply w-full p-2 text-lg shadow-lg focus:outline-blue-600 rounded-sm
-}
-
-.dark-mode input, .dark-mode textarea {
-  @apply bg-gray-600
+  @apply w-full p-2 text-lg shadow-lg focus:outline-blue-600 rounded-sm duration-200
 }
 
 .make-post textarea {
@@ -59,23 +64,29 @@ input, textarea {
 }
 
 .posts {
-  @apply w-screen h-screen
+  @apply w-screen h-screen duration-200 bg-gray-200
 }
 
 .posts .list {
-  @apply flex flex-col gap-5 overflow-scroll h-5/6 border-black border-4 rounded-lg p-10 mx-10
+  @apply flex flex-col gap-5 overflow-scroll h-5/6 border-4 rounded-lg p-10 mx-10
 }
 
 .posts header {
   @apply flex justify-between items-center w-full h-24 px-10
 }
 
+.posts header div {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
 .posts header h1 {
   @apply sm:text-4xl text-2xl font-bold overflow-visible
 }
 
-.posts header button {
-  @apply w-24 sm:w-48 bg-black sm:text-xl text-sm sm:p-4 p-2 text-white font-bold text-center rounded-md
+.post-btn {
+  @apply w-24 sm:w-48 bg-blue-800 sm:text-xl text-sm sm:p-4 p-2 text-white font-bold text-center rounded-md
 }
 
 .posts .empty {
@@ -87,15 +98,15 @@ input, textarea {
 }
 
 .posts .post {
-  @apply p-5 flex flex-col gap-5 w-full border-black border-2 rounded
+  @apply p-5 flex flex-col gap-5 w-full border-2 rounded
 }
 
 .posts .post h1 {
-  @apply font-bold text-lg w-full border-b-2 border-b-black
+  @apply font-bold text-lg w-full border-b-2
 }
 
 .posts .post h2 {
-  @apply text-gray-500
+  @apply opacity-50
 }
 
 .posts footer {

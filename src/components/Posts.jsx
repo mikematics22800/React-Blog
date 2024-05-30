@@ -2,14 +2,14 @@ import { Link } from "react-router-dom"
 import { PostsContext } from '../App'
 import { useContext } from 'react'
 
-const Posts = () => {
+const Posts = ({lightMode, ModeButton}) => {
   // Get posts from PostsContext
   const posts = useContext(PostsContext)
 
   // Map through posts and return a list of containers with post information
   const list = posts.map((post, i) => {
     return (
-      <div className="post" key={i}>
+      <div className='post' key={i}>
         <h1>{post.title}</h1>
         <p>{post.content}</p>
         <h2>Posted by {post.username} on {post.date}</h2>
@@ -18,13 +18,16 @@ const Posts = () => {
   })
 
   return (
-    <div className="posts">
+    <div className={`posts ${lightMode == true ? ('light') : ('dark')}`}>
       <header>
         <h1>My First Blog</h1>
         {/* Navigate to posts page */}
-        <Link to='/'>
-          <button>Make Post</button>
-        </Link>
+        <div>
+          <Link to='/'>
+            <button class='post-btn'>Make Post</button>
+          </Link>
+          <ModeButton/>
+        </div>
       </header>
       {/* Render message if posts are empty */}
       {posts.length == 0 ? (
@@ -32,7 +35,7 @@ const Posts = () => {
           <h1>You haven't posted anything yet.</h1>
         </div>
       ) : (
-        <div className="list">
+        <div className={`list ${lightMode == true ? ('border-black') : ('border-white')}`}>
           {list}
         </div>
       )}
