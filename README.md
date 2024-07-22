@@ -23,8 +23,7 @@ npm run dev
 
 Edit the source code in an Integrated Development Environment such as [Visual Studio Code](https://code.visualstudio.com/) to see changes reflected in your browser. Happy hacking!
 
-![](./public/screenshot.png)
-Github Pages Link: https://mikemedina22800.github.io/React-Blog
+[![](./public/screenshot.png)](https://mikematics22800.github.io/React-Blog)
 
 
 
